@@ -3,6 +3,7 @@ from sqlalchemy import text
 from .database import Base, engine
 from . import operations_models  # Registers the operational tables before create_all.
 from .settlement import models as settlement_models  # Registers the pilot settlement table.
+from .settlement.migration import run_migrations
 from .config import SEED_DEMO
 
 def bootstrap():
@@ -11,6 +12,7 @@ def bootstrap():
             with engine.begin() as conn:
                 conn.execute(text("SELECT pg_advisory_xact_lock(1057002)"))
                 Base.metadata.create_all(conn)
+                run_migrations(conn)
             break
         except Exception:
             if attempt == 29:

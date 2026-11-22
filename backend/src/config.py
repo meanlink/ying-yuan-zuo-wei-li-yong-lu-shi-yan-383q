@@ -5,3 +5,4 @@ REDIS_URL = os.getenv("REDIS_URL", "redis://redis:6379/0")
 JWT_SECRET = os.getenv("JWT_SECRET", "cinema-seat-secret")
 JWT_ALGORITHM = "HS256"
 SEED_DEMO = os.getenv("SEED_DEMO", "true").lower() == "true"
+RATE_LIMIT = int(os.getenv("RATE_LIMIT", "120"))

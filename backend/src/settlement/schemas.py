@@ -17,6 +17,12 @@ class SettlementInput(BaseModel):
     notes: Note
 
 
+class SettlementCorrection(SettlementInput):
+    """补正必须基于读取时的当前版本号，防止并发补正或复核互相覆盖。"""
+    expected_settlement_id: int = Field(gt=0)
+
+
 class SettlementReview(BaseModel):
     decision: Literal['approved','rejected']
     note: Note
+    expected_settlement_id: int = Field(gt=0)

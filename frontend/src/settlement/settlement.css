@@ -8,3 +8,14 @@
 .settlement-metrics strong { font-size: 1.35rem; }
 .settlement-breakdown > div { padding: 9px 0; border-bottom: 1px solid #e3dfe9; }
 .settlement-breakdown dd { margin: 2px 0 0; font-weight: 600; }
+.settlement-sources { display: grid; grid-template-columns: repeat(auto-fit, minmax(140px, 1fr)); gap: 12px; margin: 10px 0; }
+.settlement-sources > div { display: grid; gap: 4px; padding: 10px 12px; border: 1px solid #e3dfe9; border-radius: 10px; background: #faf8ff; }
+.settlement-sources small { color: #6f6a80; }
+.settlement-diff, .settlement-held { padding: 10px 12px; border-radius: 8px; background: #fff4e5; color: #8a4b00; font-weight: 600; }
+.settlement-correct, .settlement-history { margin-top: 10px; }
+.settlement-correct > summary, .settlement-history > summary { cursor: pointer; font-weight: 600; }
+.settlement-correct .settlement-form { margin-top: 10px; }
+.settlement-history ol { padding-left: 18px; display: grid; gap: 10px; }
+.settlement-history li.current > b { color: #4a3aff; }
+.settlement-history li p { margin: 2px 0; }
+.settlement-history small { display: block; color: #6f6a80; }

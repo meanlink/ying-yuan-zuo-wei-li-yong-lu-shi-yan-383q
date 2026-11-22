@@ -2,7 +2,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 from redis import Redis
 from sqlalchemy import text
-from .config import REDIS_URL
+from .config import RATE_LIMIT, REDIS_URL
 from .database import engine
 from .middlewares.rate_limit import RateLimitMiddleware
 from .middlewares.request_id import RequestIdMiddleware
@@ -11,7 +11,7 @@ from .settlement import routes as settlement
 
 app = FastAPI(title="影院座位利用率实验")
 app.add_middleware(CORSMiddleware, allow_origins=["*"], allow_credentials=False, allow_methods=["*"], allow_headers=["*"])
-app.add_middleware(RateLimitMiddleware)
+app.add_middleware(RateLimitMiddleware, limit=RATE_LIMIT)
 app.add_middleware(RequestIdMiddleware)
 app.include_router(auth.router, prefix="/api")
 app.include_router(plans.router, prefix="/api")
